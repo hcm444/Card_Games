@@ -6,6 +6,7 @@ from collections import Counter
 # used dictionaries (Counter)
 import time
 # for statistics
+import csv
 
 royal = False
 # boolean
@@ -13,6 +14,7 @@ start_time = time.time()
 # init time
 iteration = 1
 # count interations
+
 while not royal:
     vals = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'jack', 'queen', 'king', 'ace']
     # values for cards
@@ -62,9 +64,23 @@ while not royal:
         # for the five cards
         new_val_list.append(i[0])
         # append every value to a new list
-    if sorted(new_val_list) == ['10', 'ace', 'jack', 'king', 'queen'] and y == "5 of a kind":
+    if sorted(new_val_list) != ['10', 'ace', 'jack', 'king', 'queen'] or y != "5 of a kind":
+        pass
+    else:
         royal = True
         print("Royal Flush")
         print("--- %s seconds ---" % (time.time() - start_time))
         print("--- %s hands ---" % iteration)
+        header = ['seconds', 'hands']
+        data = [(time.time() - start_time),iteration]
+        with open('data.csv', 'a', encoding='UTF8') as f:
+            writer = csv.writer(f)
+            data = [(time.time() - start_time), iteration]
+            # write the header
+            writer = csv.writer(f)
+
+
+            # write the data
+            writer.writerow(data)
+
     iteration += 1
