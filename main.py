@@ -1,11 +1,13 @@
-#HENRY MEIER
-#This is a simplistic deck of cards generator. The objective here is to generate a Royal Flush
-#Program takes 5 to 45 seconds
-
 import itertools
 import random
 from collections import Counter
 import time
+
+#HENRY MEIER
+#This is a simplistic deck of cards generator. The objective here is to generate a Royal Flush
+#Program takes 5 to 45 seconds
+
+
 royal = False
 start_time = time.time()
 while royal == False:
